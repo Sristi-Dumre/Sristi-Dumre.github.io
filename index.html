@@ -45,7 +45,7 @@
   .orb1 { width:600px; height:600px; background:#7c6af7; top:-200px; left:-100px; }
   .orb2 { width:500px; height:500px; background:#38bdf8; bottom:20%; right:-150px; }
   .orb3 { width:400px; height:400px; background:#a78bfa; top:50%; left:30%; }
-
+ 
   /* NAV */
   nav {
     position:fixed; top:0; left:0; right:0; z-index:100;
@@ -73,10 +73,10 @@
     transition:background 0.2s !important;
   }
   .nav-cta:hover { background:var(--accent2) !important; }
-
+ 
   section { position:relative; z-index:1; }
   .container { max-width:1100px; margin:0 auto; padding:0 2rem; }
-
+ 
   /* HERO */
   #hero { min-height:100vh; display:flex; align-items:center; padding:7rem 0 4rem; }
   .hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
@@ -119,7 +119,7 @@
     transition:all 0.2s; border:1px solid var(--border);
   }
   .btn-outline:hover { background:var(--card-hover); border-color:var(--accent); }
-
+ 
   .hero-stats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
   .stat-card {
     background:var(--card); border:1px solid var(--border2);
@@ -137,7 +137,7 @@
   }
   .stat-label { font-size:0.82rem; color:var(--text3); text-transform:uppercase; letter-spacing:0.06em; }
   .stat-desc { font-size:0.9rem; color:var(--text2); margin-top:0.5rem; }
-
+ 
   /* SECTION SHARED */
   .section-label {
     display:inline-block; font-size:0.75rem; font-weight:500;
@@ -153,7 +153,7 @@
     color:var(--text2); font-size:1.05rem;
     max-width:560px; font-weight:300; margin-bottom:3rem;
   }
-
+ 
   /* ABOUT */
   #about { padding:7rem 0; }
   .about-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:4rem; align-items:start; }
@@ -168,7 +168,7 @@
   }
   .highlight-item h4 { font-size:0.9rem; font-weight:500; margin-bottom:0.2rem; color:var(--text); }
   .highlight-item p { font-size:0.82rem; color:var(--text3); margin:0; }
-
+ 
   /* EXPERIENCE TIMELINE */
   #experience { padding:7rem 0; background:linear-gradient(180deg,transparent 0%,rgba(124,106,247,0.02) 50%,transparent 100%); }
   .timeline { position:relative; padding-left:2rem; }
@@ -204,7 +204,7 @@
     padding:0.2rem 0; display:flex; gap:0.6rem;
   }
   .tl-bullets li::before { content:'→'; color:var(--accent); font-size:0.75rem; flex-shrink:0; margin-top:3px; }
-
+ 
   /* PROJECTS */
   #projects { padding:7rem 0; }
   .projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1.5rem; }
@@ -217,6 +217,7 @@
     content:''; position:absolute; inset:0;
     background:linear-gradient(135deg,rgba(124,106,247,0.05) 0%,transparent 60%);
     opacity:0; transition:opacity 0.3s;
+    pointer-events:none;
   }
   .project-card:hover { border-color:var(--border); transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,0,0,0.4); }
   .project-card:hover::before { opacity:1; }
@@ -235,21 +236,33 @@
     color:var(--text); margin-bottom:0.6rem; line-height:1.3;
   }
   .project-card p { font-size:0.88rem; color:var(--text2); line-height:1.65; margin-bottom:1.2rem; font-weight:300; }
-  .project-meta { display:flex; align-items:center; justify-content:space-between; }
-  .project-links { display:flex; gap:0.8rem; flex-wrap:wrap; }
+  .project-meta { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; position:relative; z-index:2; }
+  .project-links { display:flex; gap:0.6rem; flex-wrap:wrap; position:relative; z-index:2; }
   .proj-link {
-    font-size:0.82rem; color:var(--accent2); text-decoration:none;
-    font-weight:500; display:flex; align-items:center; gap:4px; transition:color 0.2s;
+    font-size:0.8rem; font-weight:500;
+    display:inline-flex; align-items:center; gap:5px;
+    padding:0.4rem 0.9rem; border-radius:6px;
+    background:rgba(124,106,247,0.12); border:1px solid rgba(124,106,247,0.3);
+    color:var(--accent2); text-decoration:none;
+    transition:all 0.2s; cursor:pointer;
+    position:relative; z-index:3;
   }
-  .proj-link:hover { color:var(--text); }
-  .proj-link svg { width:13px; height:13px; }
+  .proj-link:hover {
+    background:var(--accent); color:#fff;
+    border-color:var(--accent); transform:translateY(-1px);
+  }
+  .proj-link svg { width:12px; height:12px; flex-shrink:0; }
+  .proj-link.demo {
+    background:rgba(56,189,248,0.1); border-color:rgba(56,189,248,0.3); color:var(--accent3);
+  }
+  .proj-link.demo:hover { background:var(--accent3); color:#000; border-color:var(--accent3); }
   .featured-badge {
     font-size:0.7rem; font-weight:500; text-transform:uppercase;
     letter-spacing:0.08em; color:var(--accent);
     background:rgba(124,106,247,0.12); border:1px solid var(--border);
     padding:0.2rem 0.6rem; border-radius:4px;
   }
-
+ 
   /* SKILLS */
   #skills { padding:7rem 0; }
   .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.5rem; }
@@ -275,7 +288,7 @@
     padding:0.3rem 0.75rem; border-radius:100px; transition:all 0.2s;
   }
   .skill-pill:hover { color:var(--text); border-color:var(--border); background:var(--card-hover); }
-
+ 
   /* CERTIFICATIONS */
   #certifications { padding:7rem 0; }
   .cert-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.2rem; }
@@ -298,7 +311,7 @@
   .cert-info .cert-year.in-progress { color:var(--accent3); }
   .cert-verify { font-size:0.78rem; color:var(--accent2); text-decoration:none; margin-top:0.4rem; display:inline-block; }
   .cert-verify:hover { text-decoration:underline; }
-
+ 
   /* PUBLICATIONS */
   #publications { padding:7rem 0; background:linear-gradient(180deg,transparent 0%,rgba(56,189,248,0.02) 50%,transparent 100%); }
   .pub-list { display:flex; flex-direction:column; gap:1.2rem; }
@@ -318,7 +331,7 @@
   .pub-content p { font-size:0.84rem; color:var(--text3); margin-bottom:0.5rem; }
   .pub-link { font-size:0.8rem; color:var(--accent2); text-decoration:none; font-weight:500; }
   .pub-link:hover { color:var(--text); }
-
+ 
   /* CONTACT */
   #contact { padding:7rem 0 5rem; }
   .contact-inner { display:grid; grid-template-columns:1.2fr 1fr; gap:4rem; align-items:start; }
@@ -341,7 +354,7 @@
   .contact-link-label { font-size:0.75rem; color:var(--text3); text-transform:uppercase; letter-spacing:0.06em; }
   .contact-link-val { font-size:0.9rem; color:var(--text); font-weight:400; }
   .contact-link-arrow { color:var(--text3); font-size:1rem; }
-
+ 
   .website-card {
     background:var(--card); border:1px solid var(--border);
     border-radius:var(--radius); padding:1.8rem;
@@ -359,7 +372,7 @@
     background:rgba(124,106,247,0.08); transition:background 0.2s;
   }
   .website-url:hover { background:rgba(124,106,247,0.15); }
-
+ 
   /* FOOTER */
   footer {
     border-top:1px solid var(--border2); padding:2rem;
@@ -372,7 +385,7 @@
     background:linear-gradient(90deg,transparent,var(--border),transparent);
     margin:0 2rem; position:relative; z-index:1;
   }
-
+ 
   /* RESPONSIVE */
   @media(max-width:768px){
     .hero-inner { grid-template-columns:1fr; gap:3rem; }
@@ -389,11 +402,11 @@
 </style>
 </head>
 <body>
-
+ 
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
 <div class="orb orb3"></div>
-
+ 
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">SD<span>.</span></a>
@@ -407,7 +420,7 @@
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
-
+ 
 <!-- HERO -->
 <section id="hero">
   <div class="container">
@@ -456,9 +469,9 @@
     </div>
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
@@ -499,9 +512,9 @@
     </div>
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
@@ -509,7 +522,7 @@
     <h2>Work History</h2>
     <p class="section-lead">A blend of analytics, operations, and technology — across industry and academia.</p>
     <div class="timeline">
-
+ 
       <div class="tl-item">
         <div class="tl-dot current"></div>
         <div class="tl-period current">July 2025 — Present · Current Role</div>
@@ -522,7 +535,7 @@
           <li>Collaborate with cross-functional teams to translate data findings into strategic recommendations</li>
         </ul>
       </div>
-
+ 
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-period">Dec 2023 — May 2025</div>
@@ -534,7 +547,7 @@
           <li>Generated regular financial and enrollment reports for department heads, translating raw records into actionable summaries</li>
         </ul>
       </div>
-
+ 
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-period">2021 — 2023</div>
@@ -546,7 +559,7 @@
           <li>Built keyword performance dashboards to surface trends, identify content gaps, and prioritize publishing pipeline</li>
         </ul>
       </div>
-
+ 
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-period">2021 — 2023</div>
@@ -558,7 +571,7 @@
           <li>Created data-backed design proposals by analyzing competitor products and user feedback patterns</li>
         </ul>
       </div>
-
+ 
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-period">2019</div>
@@ -569,7 +582,7 @@
           <li>Gained foundational experience building data-connected front-end systems under professional mentorship</li>
         </ul>
       </div>
-
+ 
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-period">Feb 2024 — Present</div>
@@ -580,13 +593,13 @@
           <li>Manage full-stack operations: content analytics, SEO performance tracking, domain hosting, and custom development on Hostinger</li>
         </ul>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- PROJECTS -->
 <section id="projects">
   <div class="container">
@@ -594,7 +607,7 @@
     <h2>Featured Work</h2>
     <p class="section-lead">From AI/ML research to data analytics and IoT — here's what I've built.</p>
     <div class="projects-grid">
-
+ 
       <div class="project-card featured">
         <div class="project-tags">
           <span class="tag tag-purple">AI/ML</span>
@@ -602,29 +615,18 @@
           <span class="tag tag-green">Published</span>
         </div>
         <h3>Analysis of Job Trends in AI & Machine Learning</h3>
-        <p>Analyzed thousands of LinkedIn job listings using logistic regression, KNN, cluster analysis, and association analysis to map skill demand and hiring trends in the AI/ML market. Published at WDSI 2025.</p>        <div class="project-meta">
+        <p>Analyzed thousands of LinkedIn job listings using logistic regression, KNN, cluster analysis, and association analysis to map skill demand and hiring trends in the AI/ML market. Published at WDSI 2025.</p>
+        <div class="project-meta">
           <div class="project-links">
             <a href="https://github.com/Sristi-Dumre/Analysis-of-Job-Trends-in-AI_ML" target="_blank" class="proj-link">
               <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>GitHub
             </a>
             <a href="http://wdsinet.org/Annual_Meetings/2025_Proceedings/papers/abstract-275.pdf" target="_blank" class="proj-link">Abstract →</a>
           </div>
-         <div class="project-links">
-          <a href="https://github.com/Sristi-Dumre/Analysis-of-Job-Trends-in-AI_ML" target="_blank" class="proj-link">
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-            </svg>
-            GitHub
-          </a>
-          
-        <a href="http://wdsinet.org/Annual_Meetings/2025_Proceedings/papers/abstract-285.pdf" target="_blank" class="proj-link">
-          Abstract →
-        </a>
-        </div>
           <span class="featured-badge">★ Featured</span>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <div class="project-tags">
           <span class="tag tag-amber">Time Series</span>
@@ -642,7 +644,7 @@
           </div>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <div class="project-tags">
           <span class="tag tag-purple">AI Research</span>
@@ -658,7 +660,7 @@
           </div>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <div class="project-tags">
           <span class="tag tag-green">Healthcare</span>
@@ -674,7 +676,7 @@
           </div>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <div class="project-tags">
           <span class="tag tag-amber">Time Series</span>
@@ -690,7 +692,7 @@
           </div>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <div class="project-tags">
           <span class="tag tag-green">IoT</span>
@@ -700,11 +702,11 @@
         <p>Built a hardware-based intruder detection system using Arduino and ultrasonic sensors. Programmed real-time alert logic and integrated sensor data into a monitoring interface.</p>
         <div class="project-meta">
           <div class="project-links">
-            <a href="https://www.youtube.com/watch?v=XN9_8L22DXo" target="_blank" class="proj-link">▶ Demo</a>
+            <a href="https://www.youtube.com/watch?v=XN9_8L22DXo" target="_blank" class="proj-link demo">▶ Demo</a>
           </div>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <div class="project-tags">
           <span class="tag tag-blue">Web</span>
@@ -714,11 +716,11 @@
         <p>Designed and developed a full-stack laundry service platform — including a responsive website and mobile application for seamless service booking and management.</p>
         <div class="project-meta">
           <div class="project-links">
-            <a href="https://www.youtube.com/watch?v=38ZmuuwgDrE&feature=youtu.be" target="_blank" class="proj-link">▶ Demo</a>
+            <a href="https://www.youtube.com/watch?v=38ZmuuwgDrE&feature=youtu.be" target="_blank" class="proj-link demo">▶ Demo</a>
           </div>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <div class="project-tags">
           <span class="tag tag-green">Android</span>
@@ -731,17 +733,17 @@
             <a href="https://github.com/aashikmajhi/MarmatSewa" target="_blank" class="proj-link">
               <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>GitHub
             </a>
-            <a href="https://youtu.be/XpwpMrWW3Vs" target="_blank" class="proj-link">▶ Demo</a>
+            <a href="https://youtu.be/XpwpMrWW3Vs" target="_blank" class="proj-link demo">▶ Demo</a>
           </div>
         </div>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
@@ -813,9 +815,9 @@
     </div>
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="container">
@@ -823,7 +825,7 @@
     <h2>Credentials</h2>
     <p class="section-lead">Continuous learning in AI, cloud, and data.</p>
     <div class="cert-grid">
-
+ 
       <div class="cert-card ongoing">
         <div class="cert-icon">☁️</div>
         <div class="cert-info">
@@ -832,7 +834,7 @@
           <div class="cert-year in-progress">⟳ Currently In Progress</div>
         </div>
       </div>
-
+ 
       <div class="cert-card">
         <div class="cert-icon">🏛️</div>
         <div class="cert-info">
@@ -842,7 +844,7 @@
           <a href="https://badges.plus.columbia.edu/711ec8dd-5ebb-416c-b688-10d3b91bc7ea#acc.XqYyfCv3" target="_blank" class="cert-verify">Verify Certificate →</a>
         </div>
       </div>
-
+ 
       <div class="cert-card">
         <div class="cert-icon">⚡</div>
         <div class="cert-info">
@@ -852,7 +854,7 @@
           <a href="https://badges.plus.columbia.edu/f9f85801-4c03-412e-9692-d04fadeaac3b#acc.fMQIWc9l" target="_blank" class="cert-verify">Verify Certificate →</a>
         </div>
       </div>
-
+ 
       <div class="cert-card">
         <div class="cert-icon">🤖</div>
         <div class="cert-info">
@@ -862,7 +864,7 @@
           <a href="https://verify.skilljar.com/c/tmo6j4aj4jd6" target="_blank" class="cert-verify">Verify Certificate →</a>
         </div>
       </div>
-
+ 
       <div class="cert-card">
         <div class="cert-icon">🎓</div>
         <div class="cert-info">
@@ -871,7 +873,7 @@
           <div class="cert-year">2025</div>
         </div>
       </div>
-
+ 
       <div class="cert-card">
         <div class="cert-icon">💻</div>
         <div class="cert-info">
@@ -880,29 +882,29 @@
           <div class="cert-year">2021</div>
         </div>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- PUBLICATIONS -->
 <section id="publications">
   <div class="container">
     <div class="section-label">Research</div>
     <h2>Publications</h2>
     <div class="pub-list">
-
+ 
       <div class="pub-card">
         <span class="pub-year-badge">WDSI 2025</span>
-      <div class="pub-content">
+        <div class="pub-content">
           <h4>AI/ML Job Market Analysis — Advanced Analytics</h4>
           <p>Analysis of AI/ML job listings from LinkedIn to identify hiring trends, required skill sets, and emerging roles in the artificial intelligence labor market.</p>
           <a href="http://wdsinet.org/Annual_Meetings/2025_Proceedings/papers/abstract-275.pdf" target="_blank" class="pub-link">→ View Abstract</a>
         </div>
       </div>
-
+ 
       <div class="pub-card">
         <span class="pub-year-badge">WDSI 2025</span>
         <div class="pub-content">
@@ -911,7 +913,7 @@
           <a href="http://wdsinet.org/Annual_Meetings/2025_Proceedings/papers/abstract-285.pdf" target="_blank" class="pub-link">→ View Abstract</a>
         </div>
       </div>
-
+ 
       <div class="pub-card">
         <span class="pub-year-badge">Undergraduate</span>
         <div class="pub-content">
@@ -919,13 +921,13 @@
           <p>Final-year undergraduate research project — designed, developed, and evaluated a full e-commerce platform using evidence-based UI/UX methodologies.</p>
         </div>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
@@ -935,7 +937,7 @@
         <h2>Let's Work Together</h2>
         <p>I'm actively looking for full-time opportunities in data science, analytics, and AI — especially roles at the frontier of emerging AI. If you're building something interesting, I'd love to connect.</p>
         <div class="contact-links">
-
+ 
           <a href="mailto:dumresristi@gmail.com" class="contact-link">
             <div class="contact-link-icon">
               <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--accent2)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -946,7 +948,7 @@
             </div>
             <div class="contact-link-arrow">→</div>
           </a>
-
+ 
           <a href="https://www.linkedin.com/in/shristidumre" target="_blank" class="contact-link">
             <div class="contact-link-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:var(--accent2)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -957,7 +959,7 @@
             </div>
             <div class="contact-link-arrow">→</div>
           </a>
-
+ 
           <a href="https://github.com/Sristi-Dumre" target="_blank" class="contact-link">
             <div class="contact-link-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:var(--accent2)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -968,7 +970,7 @@
             </div>
             <div class="contact-link-arrow">→</div>
           </a>
-
+ 
           <a href="https://www.youtube.com/@shristidumre" target="_blank" class="contact-link">
             <div class="contact-link-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:var(--accent2)"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
@@ -979,10 +981,10 @@
             </div>
             <div class="contact-link-arrow">→</div>
           </a>
-
+ 
         </div>
       </div>
-
+ 
       <div>
         <div class="website-card">
           <h3>🌐 LatestEcho</h3>
@@ -1003,14 +1005,14 @@
           </div>
         </div>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
+ 
 <footer>
   <p>Designed & built by <span>Sristi Dumre</span> — 2026. Data Analyst & AI Specialist.</p>
 </footer>
-
+ 
 </body>
 </html>
